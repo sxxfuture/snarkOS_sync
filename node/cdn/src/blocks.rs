@@ -210,7 +210,7 @@ pub async fn load_blocks<N: Network>(
         // add by pan
         if let Ok(url) = env::var("RABBITMQ_URL") {
             let name: String = env::var("RABBITMQ_NAME").unwrap();
-            let body = format!("{:?}",blocks);
+            let body = format!("{:?}",next_blocks);
             let mut connection = Connection::insecure_open(&url).unwrap();
             let channel = connection.open_channel(None).unwrap();
             let exchange = Exchange::direct(&channel);
